@@ -113,7 +113,7 @@ func releaseExportedArray(arr *CArrowArray) {
 	h := getHandle(arr.private_data)
 	h.Value().(arrow.ArrayData).Release()
 	h.Delete()
-	fmt.Println("sheep debug, releaseExportedArray", arr.private_data)
+	fmt.Println("sheep debug, releaseExportedArray")
 	C.free(unsafe.Pointer(arr.private_data))
 }
 

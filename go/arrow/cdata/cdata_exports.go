@@ -384,6 +384,7 @@ func exportArray(arr arrow.Array, out *CArrowArray, outSchema *CArrowSchema) {
 	}
 
 	arr.Data().Retain()
+	fmt.Println("sheep debug, exportArray")
 	h := cgo.NewHandle(arr.Data())
 	out.private_data = createHandle(h)
 	out.release = (*[0]byte)(C.goReleaseArray)
