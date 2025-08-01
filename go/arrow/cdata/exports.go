@@ -17,6 +17,7 @@
 package cdata
 
 import (
+	"fmt"
 	"runtime/cgo"
 	"unsafe"
 
@@ -112,6 +113,7 @@ func releaseExportedArray(arr *CArrowArray) {
 	h := getHandle(arr.private_data)
 	h.Value().(arrow.ArrayData).Release()
 	h.Delete()
+	fmt.Println("sheep debug, releaseExportedArray", arr.private_data)
 	C.free(unsafe.Pointer(arr.private_data))
 }
 
